@@ -1,0 +1,13 @@
+streamlit==1.48.1
+python-dotenv==1.1.1
+langchain==0.3.27
+langchain-community==0.3.27
+langchain-core==0.3.74
+langchain-experimental==0.3.4
+langchain-groq==0.3.7
+langchain-huggingface==0.3.1
+chromadb==1.0.20
+agentic-doc==0.3.2
+huggingface-hub==0.34.4
+PyMuPDF==1.26.3
+pdfplumber==0.11.7
