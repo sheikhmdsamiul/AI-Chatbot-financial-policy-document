@@ -33,7 +33,7 @@ llm = ChatGroq(
 
 # Function to run RAG chat with the given query and context
 # This function uses the vector store to retrieve relevant documents and answer the query.
-def rag_chat(query, chat_history,text):
+def rag_chat(query, chat_history,vector_store):
     """Run RAG chat with the given query and context.
     Args:
         query (str): The user query to answer.
@@ -46,7 +46,7 @@ def rag_chat(query, chat_history,text):
         return "Query cannot be empty."
     
     # Creating vector store and retriever
-    vector_store = create_vector_store(text)
+    #vector_store = create_vector_store(text)
     retriever = vector_store.as_retriever(search_kwargs={"k": 10})
 
     # Contextualization prompt 
