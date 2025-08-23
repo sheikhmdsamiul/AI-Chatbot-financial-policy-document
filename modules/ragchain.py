@@ -62,7 +62,7 @@ def rag_chat(query, chat_history,vector_store):
         model_name=RE_RANKING_MODEL)
     
     # Cross-encoder compressor
-    compressor = CrossEncoderReranker(model=re_ranker, top_n=3)
+    compressor = CrossEncoderReranker(model=re_ranker, top_n=6)
 
     # Contextual compression retriever
     # This retriever compresses the context using the cross-encoder
@@ -83,12 +83,12 @@ def rag_chat(query, chat_history,vector_store):
 
     # question answer prompt
     qa_prompt_template = ChatPromptTemplate.from_messages([
-        ("system", """You are an assistant for question-answering tasks.
+        ("system", """You are an assistant for question-answering tasks of financial policy document.
 
                     Use the following pieces of retrieved context to answer the question.
 
                     You MUST PROVIDE the answer in the following format:
-                            **Answer:** [Direct response to the question]
+                            **Answer:** [Solid response to the question. Give detailed and specific answers if needed."]
 
                             **Supporting Context:** "[Exact quote from the source material]"
 
