@@ -3,13 +3,12 @@ from langchain.schema import Document
 import streamlit as st
 from agentic_doc.parse import parse
 
+from modules.vector_store import create_vector_store
+
 pdf_path = "Policy file.pdf"
 results = parse(pdf_path)
 
-
-
-
-  
+# Function to convert parser output to LangChain Documents
 def parse_output_to_documents(parsed_output):
     """
     Convert parser output (with HTML + metadata comments) into LangChain Documents.
@@ -45,6 +44,15 @@ def parse_output_to_documents(parsed_output):
 
     return documents
 
-st.write(parse_output_to_documents(results))
+documents = parse_output_to_documents(results)\
+
+vector_store = create_vector_store(documents)
+
+res = vector_store.similarity_search(query = "Principles of Responsible Financial Management", k=3)
+for i, doc in enumerate(results):
+    st.markdown(f"### Result {i+1}")
+    st.write(doc.page_content)
+    st.json(doc.metadata)
+st.write("ReChunked Documents:", vector_store)
 
 
