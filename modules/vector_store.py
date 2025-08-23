@@ -41,10 +41,6 @@ def semantic_text_splitter(document):
 def create_vector_store(documents):
 
     chunks = semantic_text_splitter(documents)
-  
-    # Clear out the existing database directory if it exists
-    if os.path.exists(CHROMA_PATH):
-        shutil.rmtree(CHROMA_PATH)
 
      # Create a new Chroma database from the documents using OpenAI embeddings
     db = Chroma.from_documents(
