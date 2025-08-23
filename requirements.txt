@@ -11,3 +11,4 @@ agentic-doc==0.3.2
 huggingface-hub==0.34.4
 PyMuPDF==1.26.3
 pdfplumber==0.11.7
+sentence-transformers==5.1.0
